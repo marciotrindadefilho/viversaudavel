@@ -7,8 +7,8 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Loader2, CheckCircle2 } from 'lucide-react'
 
-// O TIPO CORRIGIDO: Assim como no CartClient, tornamos as propriedades do produto opcionais
-// para corresponder exatamente ao que o Supabase pode retornar.
+// O TIPO CORRIGIDO: Garantimos que todos os 'id's são do tipo 'string',
+// resolvendo o conflito de tipos.
 type CarrinhoItemComProduto = {
     id: string;
     quantidade: number;

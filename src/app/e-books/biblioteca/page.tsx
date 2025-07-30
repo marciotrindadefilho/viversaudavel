@@ -1,78 +1,44 @@
-'use client'
+import { supabase } from '@/lib/supabaseClient';
+import EbookCard from '@/components/EbookCard';
 
-import { useEffect, useState } from 'react'
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
-import { Database } from '@/types/supabase'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-
-type Produto = Database['public']['Tables']['produtos']['Row']
-type Carrinho = Database['public']['Tables']['carrinho']['Insert']
-
-export default function EbooksLibraryPage() {
-  const supabase = useSupabaseClient<Database>()
-  const session = useSession()
-  const [produtos, setProdutos] = useState<Produto[]>([])
-
-  useEffect(() => {
-    const fetchProdutos = async () => {
-      const { data, error } = await supabase
+// A página é um Server Component, buscando dados de forma assíncrona.
+export default async function EbooksLibraryPage() {
+    
+    // Busca os dados da tabela 'produtos' no Supabase
+    const { data: produtos, error } = await supabase
         .from('produtos')
         .select('*')
-        .eq('tipo', 'ebook')
+        .eq('tipo', 'ebook');
 
-      if (error) {
-        console.error('Erro ao buscar e-books:', error)
-      } else {
-        setProdutos(data)
-      }
-    }
-
-    fetchProdutos()
-  }, [supabase])
-
-  const adicionarAoCarrinho = async (produto_id: number) => {
-    if (!session?.user) {
-      alert('Você precisa estar logado para adicionar ao carrinho.')
-      return
-    }
-
-    const { error } = await supabase.from('carrinho').insert({
-      user_id: session.user.id,
-      produto_id,
-      quantidade: 1
-    } as Carrinho)
-
+    // Se ocorrer um erro na busca, exibe uma mensagem clara.
     if (error) {
-      console.error('Erro ao adicionar ao carrinho:', error)
-    } else {
-      alert('Produto adicionado ao carrinho!')
+        console.error("Erro ao buscar e-books no Supabase:", error.message);
+        return <p className="text-center text-red-500 py-20">Ocorreu um erro ao buscar os e-books. Tente novamente mais tarde.</p>;
     }
-  }
 
-  return (
-    <main className="container py-10 text-center">
-      <h1 className="text-2xl font-bold mb-8">E-books</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {produtos.map((produto) => (
-          <div key={produto.id} className="bg-white rounded-lg shadow-md p-4">
-            <Image
-              src={produto.imagem || '/placeholder.svg'}
-              alt={produto.titulo}
-              width={300}
-              height={200}
-              className="object-cover rounded mb-4 w-full"
-            />
-            <h2 className="text-lg font-semibold mb-2">{produto.titulo}</h2>
-            <p className="text-sm text-gray-600 mb-4">
-              R$ {produto.preco?.toFixed(2)}
-            </p>
-            <Button onClick={() => adicionarAoCarrinho(produto.id)}>
-              Adicionar ao Carrinho
-            </Button>
-          </div>
-        ))}
-      </div>
-    </main>
-  )
+    // Se 'produtos' for nulo ou vazio, exibe uma mensagem amigável.
+    if (!produtos || produtos.length === 0) {
+        return (
+            <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 text-center">
+                <h1 className="text-4xl font-bold mb-12">Nossa Biblioteca de E-books</h1>
+                <p className="text-gray-500 py-20">Nenhum e-book encontrado no momento. Volte em breve!</p>
+            </div>
+        );
+    }
+
+    // Se tudo der certo, exibe a lista de produtos.
+    return (
+        <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <h1 className="text-4xl font-bold text-center mb-12">Nossa Biblioteca de E-books</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                {produtos.map((produto) => (
+                    // Adicionamos uma verificação para garantir que o produto não é nulo antes de renderizar
+                    produto && <EbookCard key={produto.id} product={produto} />
+                ))}
+            </div>
+        </div>
+    );
 }
+
+// Garante que os dados sejam sempre recentes.
+export const revalidate = 0;

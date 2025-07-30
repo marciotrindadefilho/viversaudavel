@@ -5,16 +5,15 @@ import { supabase } from '@/lib/supabaseClient'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { X, ShoppingCart } from 'lucide-react'
-import { Loader2 } from 'lucide-react'
+import { X, ShoppingCart, Loader2 } from 'lucide-react'
 
-// O TIPO CORRIGIDO: Agora as propriedades dentro de 'produtos' são opcionais (string | null, number | null),
-// exatamente como o Supabase as envia. Isso resolve o conflito de tipos.
+// O TIPO CORRIGIDO: Garantimos que todos os 'id's são do tipo 'string',
+// que corresponde ao tipo 'uuid' do Supabase.
 type CarrinhoItem = {
     id: string;
     quantidade: number;
     produtos: {
-        id: string;
+        id: string; // Corrigido para string
         titulo: string | null;
         preco: number | null;
         imagem: string | null;

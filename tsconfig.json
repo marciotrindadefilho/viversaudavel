@@ -21,12 +21,12 @@
         "name": "next"
       }
     ],
-    // --- LINHAS IMPORTANTES ABAIXO ---
-    "baseUrl": ".", // Define o diretório base para resolução de caminhos.
+    // --- Configuração correta do caminho ---
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "src/*"
-      ] // Mapeia o atalho "@/*" para a pasta "src/*".
+      ]
     },
     "target": "ES2017"
   },
