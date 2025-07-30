@@ -60,8 +60,6 @@ export default function header() {
                 <Image
                   src="/logo.png"
                   alt="Viver Saudável"
-                  width={180}
-                  height={50}
                   className="h-10 px-4 py-2 logo-transparent"
                 />
               </div>

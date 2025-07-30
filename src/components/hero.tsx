@@ -41,10 +41,10 @@ export default function Hero() {
           src="/viversaudavel.png"
           alt="Background"
           fill
-          className="object-container" 
+          className="object-cover" 
           priority
           style={{
-            objectPosition: "center center",
+            objectPosition: "center",
           }}
         />
         {/* Overlay sutil para melhor integração sobre a imagem */}
