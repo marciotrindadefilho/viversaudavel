@@ -1,5 +1,7 @@
+// Arquivo: footer.tsx
+
 import Image from "next/image"
-import Link from "next/link" 
+import Link from "next/link" // AJUSTE: Importado o componente Link
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
@@ -8,7 +10,7 @@ export default function Footer() {
     <footer id="contato" className="bg-black text-white py-12 scroll-mt-24">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
-          {/* Logo e WatsApp */}
+          {/* Logo e WhatsApp */}
           <div className="space-y-4">
             <div className="footer-logo-container">
               {/*
@@ -32,10 +34,11 @@ export default function Footer() {
           <div>
             <h3 className="text-green-400 font-semibold mb-4">Links Rápidos</h3>
             <ul className="space-y-2 text-sm">
-              
+              <li><a href="/nossa-historia" className="text-gray-300 hover:text-white transition-colors">Sobre Nós</a></li>
               <li><a href="/e-books/biblioteca" className="text-gray-300 hover:text-white transition-colors">Nossos Ebooks</a></li>
-              <li><a href="/audiobooks/biblioteca" className="text-gray-300 hover:text-white transition-colors">Nossos Audiobooks</a></li>
-              
+              <li><a href="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</a></li>
+              <li><a href="/depoimentos" className="text-gray-300 hover:text-white transition-colors">Depoimentos</a></li>
+              <li><a href="/planos" className="text-gray-300 hover:text-white transition-colors">Nossos Planos</a></li>
             </ul>
           </div>
 
@@ -43,10 +46,10 @@ export default function Footer() {
           <div>
             <h3 className="text-green-400 font-semibold mb-4">Categorias</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="/" className="text-gray-300 hover:text-white transition-colors">Cardiorrespiratória</a></li>
-              <li><a href="/" className="text-gray-300 hover:text-white transition-colors">Nutrição</a></li>
-              <li><a href="/" className="text-gray-300 hover:text-white transition-colors">Saúde Mental</a></li>
-              <li><a href="/" className="text-gray-300 hover:text-white transition-colors">Prevenção</a></li>
+              <li><a href="/e-books/biblioteca" className="text-gray-300 hover:text-white transition-colors">Cardiorrespiratória</a></li>
+              <li><a href="/blog" className="text-gray-300 hover:text-white transition-colors">Nutrição</a></li>
+              <li><a href="/audiobooks/biblioteca" className="text-gray-300 hover:text-white transition-colors">Saúde Mental</a></li>
+              <li><a href="/e-books/biblioteca" className="text-gray-300 hover:text-white transition-colors">Prevenção</a></li>
             </ul>
           </div>
 

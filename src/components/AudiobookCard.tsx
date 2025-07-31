@@ -5,10 +5,9 @@ import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Clock, Star, Headphones } from 'lucide-react'
-import AudioPlayer from 'react-h5-audio-player' // Importa o player
-import 'react-h5-audio-player/lib/styles.css' // Importa os estilos do player
+import AudioPlayer from 'react-h5-audio-player'
+import 'react-h5-audio-player/lib/styles.css'
 
-// Estendemos o tipo para incluir as colunas opcionais de audiobook
 type Produto = Database['public']['Tables']['produtos']['Row'] & {
     duracao?: string | null;
     avaliacao?: number | null;
@@ -22,7 +21,7 @@ export default function AudiobookCard({ audiobook }: { audiobook: Produto }) {
             <div className="relative h-56 w-full">
                 <Image
                     src={audiobook.imagem || '/placeholder.svg'}
-                    alt={audiobook.titulo}
+                    alt={audiobook.titulo || 'Capa do Audiobook'}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
@@ -59,4 +58,3 @@ export default function AudiobookCard({ audiobook }: { audiobook: Produto }) {
         </Card>
     );
 }
-
