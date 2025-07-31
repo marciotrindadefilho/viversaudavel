@@ -1,3 +1,4 @@
+// ✅ HEADER.TSX COMPLETO E AJUSTADO
 "use client"
 
 import { useState } from "react"
@@ -40,163 +41,126 @@ export default function Header() {
   ]
 
   return (
-    <header className="futuristic-header relative z-50">
-      <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/5 to-purple-500/10 backdrop-blur-sm" />
-      <div className="container mx-auto px-4 py-2 relative z-10">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
-              <div className="relative z-10 logo-container">
-                <Image
-                  src="/logo.png"
-                  alt="Viver Saudável"
-                  width={120}
-                  height={40}
-                  className="h-10 px-4 py-2 logo-transparent"
-                />
-              </div>
-            </div>
-          </Link>
+    <header className="futuristic-header fixed w-full top-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10">
+      <div className="container mx-auto px-4 py-2 flex items-center justify-between gap-6">
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="Viver Saudável"
+            width={100}
+            height={40}
+            className="h-10 w-auto object-contain"
+          />
+        </Link>
 
-          {/* MENU DESKTOP */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <nav className="flex items-center space-x-8">
-              {menuItems.map((item) => (
-                <div key={item.title} className="relative group">
-                  <button className="futuristic-menu-item flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300">
-                    {item.icon && (
-                      <Image src={item.icon} alt={item.title} width={20} height={20} />
-                    )}
-                    <span className="font-medium">{item.title}</span>
-                    <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180 duration-300" />
-                  </button>
-                  <div className="absolute top-full left-0 mt-2 w-56 futuristic-dropdown opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <div className="py-3">
-                      {item.submenu.map((subitem) => (
-                        <Link
-                          key={subitem.title}
-                          href={subitem.href}
-                          className="block px-4 py-3 text-sm hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10 transition-all duration-200 border-l-2 border-transparent hover:border-cyan-400"
-                        >
-                          {subitem.title}
-                        </Link>
-                      ))}
-                    </div>
+        {/* MENU DESKTOP */}
+        <div className="hidden lg:flex items-center space-x-10">
+          <nav className="flex items-center space-x-10">
+            {menuItems.map((item) => (
+              <div key={item.title} className="relative group">
+                <button className="text-white/90 hover:text-cyan-400 flex items-center space-x-2">
+                  {item.icon && <Image src={item.icon} alt={item.title} width={20} height={20} />}
+                  <span className="font-medium">{item.title}</span>
+                  <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-56 bg-black/80 backdrop-blur-md rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                  <div className="py-2">
+                    {item.submenu.map((subitem) => (
+                      <Link
+                        key={subitem.title}
+                        href={subitem.href}
+                        className="block px-4 py-2 text-sm text-white/80 hover:bg-cyan-500/10"
+                      >
+                        {subitem.title}
+                      </Link>
+                    ))}
                   </div>
                 </div>
+              </div>
+            ))}
+          </nav>
+
+          <nav className="flex items-center space-x-4">
+            <Link href="#contato" className="text-white/90 hover:text-cyan-400">Contato</Link>
+            <Link href="/carrinho" className="text-white/90 hover:text-cyan-400">
+              <ShoppingCart className="w-5 h-5" />
+            </Link>
+            {user ? (
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-white/60">Olá, {user.email?.split("@")[0]}</span>
+                <Button onClick={handleSignOut} variant="ghost" size="icon">
+                  <LogOut className="w-5 h-5 text-red-500" />
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Link href="/registro" className="text-white/90 hover:text-cyan-400">
+                  <UserPlus className="w-5 h-5" />
+                </Link>
+                <Link href="/entrar" className="text-white/90 hover:text-cyan-400">
+                  <User className="w-5 h-5" />
+                </Link>
+              </>
+            )}
+          </nav>
+        </div>
+
+        {/* MENU MOBILE */}
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild className="lg:hidden">
+            <Button variant="ghost" size="icon">
+              <Menu className="h-6 w-6 text-white" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" className="w-80 bg-black/90 text-white">
+            <div className="mt-8 space-y-4">
+              {menuItems.map((item) => (
+                <Collapsible key={item.title}>
+                  <CollapsibleTrigger className="flex justify-between w-full p-3 hover:bg-white/10">
+                    <span>{item.title}</span>
+                    <ChevronDown className="w-4 h-4" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="pl-4 space-y-2">
+                    {item.submenu.map((subitem) => (
+                      <Link
+                        key={subitem.title}
+                        href={subitem.href}
+                        onClick={() => setIsOpen(false)}
+                        className="block p-2 hover:text-cyan-400"
+                      >
+                        {subitem.title}
+                      </Link>
+                    ))}
+                  </CollapsibleContent>
+                </Collapsible>
               ))}
-            </nav>
-            <nav className="flex items-center space-x-4">
-              <Link href="#contato" className="futuristic-nav-link">
+
+              <hr className="border-white/20" />
+
+              <Link href="/#contato" onClick={() => setIsOpen(false)} className="block p-3 hover:text-cyan-400">
                 Contato
               </Link>
-              <Link href="/carrinho" className="futuristic-nav-link">
-                <ShoppingCart className="w-5 h-5" />
+              <Link href="/carrinho" onClick={() => setIsOpen(false)} className="block p-3 hover:text-cyan-400">
+                <ShoppingCart className="inline-block w-4 h-4 mr-2" /> Carrinho
               </Link>
+
               {user ? (
-                <div className="flex items-center space-x-3">
-                  <span className="text-sm text-gray-600 bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
-                    Olá, {user.email?.split("@")[0]}
-                  </span>
-                  <Button onClick={handleSignOut} variant="ghost" size="icon" className="futuristic-button-danger">
-                    <LogOut className="w-5 h-5" />
-                  </Button>
-                </div>
+                <Button onClick={handleSignOut} variant="ghost" className="w-full text-left p-3 hover:text-red-500">
+                  <LogOut className="inline-block w-4 h-4 mr-2" /> Sair
+                </Button>
               ) : (
-                <div className="flex items-center space-x-2">
-                  <Link href="/registro" className="futuristic-nav-link" title="Registro">
-                    <UserPlus className="w-5 h-5" />
+                <>
+                  <Link href="/registro" onClick={() => setIsOpen(false)} className="block p-3 hover:text-cyan-400">
+                    <UserPlus className="inline-block w-4 h-4 mr-2" /> Registro
                   </Link>
-                  <Link href="/entrar" className="futuristic-nav-link" title="Entrar">
-                    <User className="w-5 h-5" />
+                  <Link href="/entrar" onClick={() => setIsOpen(false)} className="block p-3 hover:text-cyan-400">
+                    <User className="inline-block w-4 h-4 mr-2" /> Entrar
                   </Link>
-                </div>
+                </>
               )}
-            </nav>
-          </div>
-
-          {/* MENU MOBILE */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon" className="futuristic-mobile-button">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-80 futuristic-mobile-menu">
-              <div className="flex flex-col space-y-4 mt-8">
-                {menuItems.map((item) => (
-                  <Collapsible key={item.title}>
-                    <CollapsibleTrigger className="flex items-center justify-between w-full p-3 text-left hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10 rounded-lg transition-all duration-200">
-                      <span className="font-medium">{item.title}</span>
-                      <ChevronDown className="w-4 h-4" />
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="pl-4 space-y-2 mt-2">
-                      {item.submenu.map((subitem) => (
-                        <Link
-                          key={subitem.title}
-                          href={subitem.href}
-                          onClick={() => setIsOpen(false)}
-                          className="block p-2 text-sm text-gray-600 hover:text-cyan-600 hover:bg-cyan-50/50 rounded transition-all duration-200"
-                        >
-                          {subitem.title}
-                        </Link>
-                      ))}
-                    </CollapsibleContent>
-                  </Collapsible>
-                ))}
-
-                <hr className="border-white/20" />
-
-                <Link
-                  href="/#contato"
-                  className="p-3 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10 rounded-lg transition-all duration-200"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Contato
-                </Link>
-
-                <Link
-                  href="/carrinho"
-                  className="p-3 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10 rounded-lg flex items-center transition-all duration-200"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <ShoppingCart className="w-4 h-4 mr-2" />
-                  Carrinho
-                </Link>
-
-                {user ? (
-                  <Button
-                    onClick={handleSignOut}
-                    className="w-full justify-start p-3 hover:bg-red-500/10 flex items-center transition-all duration-200"
-                    variant="ghost"
-                  >
-                    <LogOut className="w-4 h-4 mr-2 text-red-500" /> Sair
-                  </Button>
-                ) : (
-                  <>
-                    <Link
-                      href="/registro"
-                      className="p-3 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10 rounded-lg flex items-center transition-all duration-200"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <UserPlus className="w-4 h-4 mr-2" />
-                      Registro
-                    </Link>
-                    <Link
-                      href="/entrar"
-                      className="p-3 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-blue-500/10 rounded-lg flex items-center transition-all duration-200"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <User className="w-4 h-4 mr-2" />
-                      Entrar
-                    </Link>
-                  </>
-                )}
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   )

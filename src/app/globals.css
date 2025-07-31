@@ -177,21 +177,16 @@
 .pulse-ring-delay-1 { animation-delay: 0.8s; }
 .pulse-ring-delay-2 { animation-delay: 1.6s; }
 
-/* Adicionar ao final de src/app/globals.css */
-
-/* FUNDO PRETO PARA O HERO */
+/* Fundo hero em radial black */
 .bg-radial-gradient-black {
   background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
 }
 
-
-/* EFEITOS VISUAIS PARA O HERO (BLACK & GOLD) */
-
-/* Partículas Flutuantes */
+/* Partículas flutuantes */
 @keyframes float-subtle {
-  0% { transform: translateY(0px); opacity: 0.7; }
+  0% { transform: translateY(0); opacity: 0.7; }
   50% { transform: translateY(-15px); opacity: 0.3; }
-  100% { transform: translateY(0px); opacity: 0.7; }
+  100% { transform: translateY(0); opacity: 0.7; }
 }
 
 .floating-particles .particle {
@@ -200,17 +195,13 @@
   animation: float-subtle 10s infinite ease-in-out;
 }
 
-/* Partículas Douradas */
 .particle-gold-1 { width: 4px; height: 4px; top: 15%; left: 10%; animation-duration: 12s; background-color: #f59e0b; }
 .particle-gold-3 { width: 2px; height: 2px; top: 75%; left: 30%; animation-duration: 15s; background-color: #fcd34d; }
 .particle-gold-5 { width: 3px; height: 3px; top: 85%; left: 5%; animation-duration: 13s; animation-delay: 1s; background-color: #fbbf24; }
-
-/* Partículas Prateadas */
 .particle-silver-2 { width: 6px; height: 6px; top: 40%; left: 85%; animation-duration: 8s; animation-delay: 2s; background-color: #d1d5db; }
 .particle-silver-4 { width: 4px; height: 4px; top: 5%; left: 90%; animation-duration: 10s; animation-delay: 3s; background-color: #9ca3af; }
 
-
-/* Linhas de Energia */
+/* Linhas de energia */
 @keyframes move-line-horizontal {
   0% { transform: translateX(-100vw); opacity: 0; }
   50% { opacity: 0.5; }
@@ -224,14 +215,14 @@
   animation: move-line-horizontal 20s infinite linear;
 }
 
-.energy-line-gold { 
-  top: 25%; 
+.energy-line-gold {
+  top: 25%;
   background: linear-gradient(to right, transparent, #f59e0b, transparent);
-  animation-duration: 15s; 
+  animation-duration: 15s;
 }
-.energy-line-silver { 
-  top: 70%; 
+.energy-line-silver {
+  top: 70%;
   background: linear-gradient(to right, transparent, #e5e7eb, transparent);
-  animation-duration: 18s; 
+  animation-duration: 18s;
   animation-delay: 4s;
 }
