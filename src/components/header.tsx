@@ -1,4 +1,3 @@
-// ✅ HEADER.TSX COMPLETO E AJUSTADO
 "use client"
 
 import { useState } from "react"

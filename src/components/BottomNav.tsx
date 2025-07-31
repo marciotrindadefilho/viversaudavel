@@ -25,7 +25,7 @@ const NavLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; l
 export default function BottomNav() {
     return (
         // Este menu só aparece em telas pequenas (md:hidden)
-        <nav className="md:hidden fixed bottom-0 left-0 z-20 w-full bg-white border-t border-gray-200">
+        <nav className="md:hidden fixed bottom-0 left-0 z-50 w-full bg-black bg-opacity-80 backdrop-blur-md border-t border-gray-800">
             <div className="flex justify-around items-center h-16">
                 <NavLink 
                     href="/" 

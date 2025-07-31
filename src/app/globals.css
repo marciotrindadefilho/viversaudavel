@@ -60,6 +60,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Inter", Arial, Helvetica, sans-serif;
+    padding-bottom: 4rem; /* Garante espaço para BottomNav */
   }
 }
 
