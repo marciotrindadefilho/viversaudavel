@@ -5,23 +5,27 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 export default function Ebooks() {
-  const ebooks = [
-    {
-      title: "Alimentação Saudável +50",
-      image: "/nutri.jpeg",
-      description: "Guia completo para uma alimentação equilibrada na maturidade",
-    },
-    {
-      title: "Saúde Mental na Maturidade",
-      image: "/nutri1.jpeg",
-      description: "Estratégias para manter o bem-estar mental após os 50 anos",
-    },
-    {
-      title: "Exercícios para Seniors",
-      image: "/nutri2.jpeg",
-      description: "Programa de exercícios adaptados para a terceira idade",
-    },
-  ]
+ const ebooks = [
+  {
+    title: "Alimentação Saudável +50",
+    image: "/nutri.jpeg",
+    description: "Guia completo para uma alimentação equilibrada na maturidade",
+    demo: "/books/alimentacao/alimentacao.pdf",
+  },
+  {
+    title: "Saúde Mental na Maturidade",
+    image: "/nutri1.jpeg",
+    description: "Estratégias para manter o bem-estar mental após os 50 anos",
+    demo: "/books/mental/mental.pdf",
+  },
+  {
+    title: "Exercícios para Seniors",
+    image: "/nutri2.jpeg",
+    description: "Programa de exercícios adaptados para a terceira idade",
+    demo: "/books/seniors/seniors.pdf",
+  },
+]
+
 
   return (
     <section className="relative py-20">
@@ -54,20 +58,28 @@ export default function Ebooks() {
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">{ebook.title}</h3>
                   <p className="text-gray-600 mb-6 leading-relaxed">{ebook.description}</p>
                 </div>
-                <div className="flex justify-center">
-                  <Link href={`/e-books/biblioteca ${ebook.title.toLowerCase().replace(/\s+/g, "-")}`}>
-                    <Button
-                      variant="outline"
-                      className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
-                    >
-                      Ver Detalhes
+                <div className="flex flex-col gap-2 mt-4">
+               <Link href={ebook.demo} target="_blank" rel="noopener noreferrer">
+                      <Button
+                    variant="outline"
+                  className="w-full border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+                >
+                  Ver Amostra
+            </Button>
+             </Link>
+            <Link href={`/e-books/biblioteca ${ebook.title.toLowerCase().replace(/\s+/g, "-")}`}>
+           <Button
+            variant="outline"
+              className="w-full border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+                 >
+                  Ver Detalhes
                     </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+                      </Link>
+                     </div>
+                  </div>
+               </div>
+              ))}
+         </div>
 
         <div className="text-center">
           <Link href="/e-books/biblioteca">

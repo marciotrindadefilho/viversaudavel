@@ -1,10 +1,9 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import AudioPlayer from "react-h5-audio-player"
-import "react-h5-audio-player/lib/styles.css"
-import { Button } from "@/components/ui/button"
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import AudiobookDemoPlayer from "./AudiobookDemoPlayer";
 
 export default function Audiobooks() {
   const audiobooks = [
@@ -12,21 +11,21 @@ export default function Audiobooks() {
       title: "Geriatria",
       image: "/fisio5.png",
       description: "Reabilitação em idosos, sarcopenia, equilíbrio, quedas",
-      audio: "/audios/ortopedia.mp3",
+      audio: "/audios/geriatria/geriatria-demo.mp3", // <-- use um demo.mp3
     },
     {
       title: "Neurologia",
       image: "/fisio3.png",
       description: "AVC, Parkinson, esclerose múltipla, lesões medulares, paralisia cerebral",
-      audio: "/audios/neurologia.mp3",
+      audio: "/audios/neurologia/neurologia-demo.mp3",
     },
     {
       title: "Respiratória",
       image: "/fisio6.png",
       description: "DPOC, asma, fibrose cística, pós-operatório de cirurgias torácicas",
-      audio: "/audios/respiratoria.mp3",
-    }, 
-  ]
+      audio: "/audios/respiratoria/respiratoria-demo.mp3",
+    },
+  ];
 
   return (
     <section className="relative py-20">
@@ -52,24 +51,13 @@ export default function Audiobooks() {
               className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col"
             >
               <div className="relative h-64">
-                <Image
-                  src={audiobook.image}
-                  alt={audiobook.title}
-                  fill
-                  sizes="100vw"
-                  className="object-cover"
-                />
+                <Image src={audiobook.image} alt={audiobook.title} fill sizes="100vw" className="object-cover" />
               </div>
               <div className="p-6 flex flex-col justify-between flex-1">
                 <div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">{audiobook.title}</h3>
                   <p className="text-gray-600 mb-4 leading-relaxed">{audiobook.description}</p>
-                  <AudioPlayer
-                    src={audiobook.audio}
-                    layout="horizontal"
-                    className="rounded-xl"
-                    autoPlay={false}
-                  />
+                  <AudiobookDemoPlayer src={audiobook.audio} />
                 </div>
                 <div className="flex justify-center mt-4">
                   <Link href={`/audiobooks/biblioteca/${audiobook.title.toLowerCase().replace(/\s+/g, "-")}`}>
@@ -99,5 +87,5 @@ export default function Audiobooks() {
         </div>
       </div>
     </section>
-  )
+  );
 }
