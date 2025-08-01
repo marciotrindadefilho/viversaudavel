@@ -11,19 +11,19 @@ export default function Audiobooks() {
       title: "Geriatria",
       image: "/fisio5.png",
       description: "Reabilitação em idosos, sarcopenia, equilíbrio, quedas",
-      audio: "/public/audios/geriatria/geriatria-demo.mp3",
+      audio: "/audios/geriatria-demo.mp3",
     },
     {
       title: "Neurologia",
       image: "/fisio3.png",
       description: "AVC, Parkinson, esclerose múltipla, lesões medulares, paralisia cerebral",
-      audio: "/public/audios/neurologia/neurologia-demo.mp3",
+      audio: "/audios/neurologia-demo.mp3",
     },
     {
       title: "Respiratória",
       image: "/fisio6.png",
       description: "DPOC, asma, fibrose cística, pós-operatório de cirurgias torácicas",
-      audio: "/public/audios/respiratoria/respiratoria-demo.mp3",
+      audio: "/audios/respiratoria-demo.mp3",
     },
   ];
 
