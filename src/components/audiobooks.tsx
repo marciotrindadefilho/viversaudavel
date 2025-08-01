@@ -11,19 +11,19 @@ export default function Audiobooks() {
       title: "Geriatria",
       image: "/fisio5.png",
       description: "Reabilitação em idosos, sarcopenia, equilíbrio, quedas",
-      audio: "/audios/geriatria/geriatria-demo.mp3", // <-- use um demo.mp3
+      audio: "/public/audios/geriatria/geriatria-demo.mp3",
     },
     {
       title: "Neurologia",
       image: "/fisio3.png",
       description: "AVC, Parkinson, esclerose múltipla, lesões medulares, paralisia cerebral",
-      audio: "/audios/neurologia/neurologia-demo.mp3",
+      audio: "/public/audios/neurologia/neurologia-demo.mp3",
     },
     {
       title: "Respiratória",
       image: "/fisio6.png",
       description: "DPOC, asma, fibrose cística, pós-operatório de cirurgias torácicas",
-      audio: "/audios/respiratoria/respiratoria-demo.mp3",
+      audio: "/public/audios/respiratoria/respiratoria-demo.mp3",
     },
   ];
 
@@ -59,18 +59,8 @@ export default function Audiobooks() {
                   <p className="text-gray-600 mb-4 leading-relaxed">{audiobook.description}</p>
                   <AudiobookDemoPlayer src={audiobook.audio} />
                 </div>
-                <div className="flex justify-center mt-4">
-                  <Link href={`/audiobooks/biblioteca/${audiobook.title.toLowerCase().replace(/\s+/g, "-")}`}>
-                    <Button
-                      variant="outline"
-                      className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
-                    >
-                      Ver Detalhes
-                    </Button>
-                  </Link>
                 </div>
               </div>
-            </div>
           ))}
         </div>
 

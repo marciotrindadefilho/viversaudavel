@@ -41,11 +41,10 @@ export default function Footer() {
           <div>
             <h3 className="text-green-400 font-semibold mb-4">Institucional</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/nossa-historia" className="text-gray-300 hover:text-white">Sobre Nós</Link></li>
-              <li><Link href="/visao" className="text-gray-300 hover:text-white">Nossa Visão</Link></li>
-              <li><Link href="/valores" className="text-gray-300 hover:text-white">Nossos Valores</Link></li>
-              <li><Link href="/depoimentos" className="text-gray-300 hover:text-white">Depoimentos</Link></li>
-              <li><Link href="/planos" className="text-gray-300 hover:text-white">Nossos Planos</Link></li>
+              <li><Link href="/blog" className="text-gray-300 hover:text-white">Nosso Blog</Link></li>
+              <li><Link href="/values" className="text-gray-300 hover:text-white">Nossos Valores</Link></li>
+              <li><Link href="/tetimonials" className="text-gray-300 hover:text-white">Depoimentos</Link></li>
+              <li><Link href="/mission" className="text-gray-300 hover:text-white">Nossa Misssão</Link></li>
             </ul>
           </div>
 
@@ -54,7 +53,7 @@ export default function Footer() {
             <h3 className="text-green-400 font-semibold mb-4">Categorias</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/e-books/biblioteca" className="text-gray-300 hover:text-white">Cardiorrespiratória</Link></li>
-              <li><Link href="/blog" className="text-gray-300 hover:text-white">Nutrição</Link></li>
+              <li><Link href="/audiobooks/biblioteca" className="text-gray-300 hover:text-white">Nutrição</Link></li>
               <li><Link href="/audiobooks/biblioteca" className="text-gray-300 hover:text-white">Saúde Mental</Link></li>
               <li><Link href="/e-books/biblioteca" className="text-gray-300 hover:text-white">Prevenção</Link></li>
             </ul>

@@ -10,19 +10,19 @@ export default function Ebooks() {
     title: "Alimentação Saudável +50",
     image: "/nutri.jpeg",
     description: "Guia completo para uma alimentação equilibrada na maturidade",
-    demo: "/books/alimentacao/alimentacao.pdf",
+    demo: "/public/books/alimentacao/alimentacao.pdf",
   },
   {
     title: "Saúde Mental na Maturidade",
-    image: "/nutri1.jpeg",
+    image: "/public/nutri1.jpeg",
     description: "Estratégias para manter o bem-estar mental após os 50 anos",
-    demo: "/books/mental/mental.pdf",
+    demo: "/public/books/mental/mental.pdf",
   },
   {
     title: "Exercícios para Seniors",
     image: "/nutri2.jpeg",
     description: "Programa de exercícios adaptados para a terceira idade",
-    demo: "/books/seniors/seniors.pdf",
+    demo: "/public/books/seniors/seniors.pdf",
   },
 ]
 
