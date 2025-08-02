@@ -42,9 +42,9 @@ export default function Footer() {
             <h3 className="text-green-400 font-semibold mb-4">Institucional</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/blog" className="text-gray-300 hover:text-white">Nosso Blog</Link></li>
-              <li><Link href="/values" className="text-gray-300 hover:text-white">Nossos Valores</Link></li>
-              <li><Link href="/tetimonials" className="text-gray-300 hover:text-white">Depoimentos</Link></li>
-              <li><Link href="/mission" className="text-gray-300 hover:text-white">Nossa Misssão</Link></li>
+              <li><Link href="/valores" className="text-gray-300 hover:text-white">Nossos Valores</Link></li>
+              <li><Link href="/depoimentos" className="text-gray-300 hover:text-white">Depoimentos</Link></li>
+              <li><Link href="/missao" className="text-gray-300 hover:text-white">Nossa Misssão</Link></li>
             </ul>
           </div>
 
