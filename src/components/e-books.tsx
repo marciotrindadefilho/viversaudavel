@@ -67,14 +67,7 @@ export default function Ebooks() {
                   Ver Amostra
             </Button>
              </Link>
-            <Link href={`/e-books/biblioteca ${ebook.title.toLowerCase().replace(/\s+/g, "-")}`}>
-           <Button
-            variant="outline"
-              className="w-full border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
-                 >
-                  Ver Detalhes
-                    </Button>
-                      </Link>
+            
                      </div>
                   </div>
                </div>
